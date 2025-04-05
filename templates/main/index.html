@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратный отсчёт</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/styles.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}" type="image/x-icon">
+
+</head>
+
+<body>
+    <h1>До 6 июня осталось:</h1>
+    <h2 id="timer"></h2>
+</body>
+
+<script>
+    function countdown() {
+        const targetDate = new Date("June 6, 2025 00:00:00").getTime();
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML = days + "д " + hours + "ч "
+        + minutes + "м " + seconds + "с";
+    }
+
+    setInterval(countdown, 1000);
+</script>
+
+</html>
+
+
+
+
+
